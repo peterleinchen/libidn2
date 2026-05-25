@@ -1,0 +1,13 @@
+<services>
+  <!-- Fetches your main project Git repository code -->
+  <service name="tar_git">
+    <param name="url">https://github.com/peterleinchen/libidn2.git</param>
+    <param name="revision">vv2.3.8</param>
+    <param name="debian">N</param>
+    <param name="dumb">N</param>
+  </service>
+
+  <!-- Automated scanner: Reads the spec file and downloads the sources -->
+  <service name="download_files">
+  </service>
+</services>
