@@ -1,0 +1,26 @@
+#!/bin/sh
+
+branch=sfos
+version=v2.3.8
+release=
+
+if [ -z $release ]; then tag=v"$version"; else tag=v"$version"rel"$release"; fi
+# delete the tags from origin and locally
+git push origin -d $tag
+git tag -d $tag
+
+# pull the latest changes from $branch on origin
+git pull origin $branch
+## in case of error, we need to merge, MANUALLY
+## git merge origin/$branch $branch
+## git commit
+
+# push back to branch
+git push origin $branch
+
+# (re-)create the tags locally and on origin
+git tag $tag
+## works only foar annotated tags: git push origin main --follow-tags
+## and this pushes AL tags: git push origin --tags
+## but we want to push a single tag only
+git push origin $tag
